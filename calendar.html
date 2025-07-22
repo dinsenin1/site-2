@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" src="app.js" defer></script>
+  
+  
+</head>
+<body>
+  
+  <button id="theme-switch" class="main">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z"/></svg>
+        </button>
+  <nav id="sidebar">
+    <ul>
+      <li>
+        <span class="logo"><img src="imagini/CYBERNOVA.png" style="height: 90px; width: 140px;"></span>
+        <button onclick=toggleSidebar() id="toggle-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m313-480 155 156q11 11 11.5 27.5T468-268q-11 11-28 11t-28-11L228-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T468-692q11 11 11 28t-11 28L313-480Zm264 0 155 156q11 11 11.5 27.5T732-268q-11 11-28 11t-28-11L492-452q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l184-184q11-11 27.5-11.5T732-692q11 11 11 28t-11 28L577-480Z"/></svg>
+        </button>
+      </li>
+      <li>
+        <a href="index.html">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"/></svg>
+          <span>Home</span>
+        </a>
+      </li>
+      <li class="active">
+        <a href="dashboard.html">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M520-640v-160q0-17 11.5-28.5T560-840h240q17 0 28.5 11.5T840-800v160q0 17-11.5 28.5T800-600H560q-17 0-28.5-11.5T520-640ZM120-480v-320q0-17 11.5-28.5T160-840h240q17 0 28.5 11.5T440-800v320q0 17-11.5 28.5T400-440H160q-17 0-28.5-11.5T120-480Zm400 320v-320q0-17 11.5-28.5T560-520h240q17 0 28.5 11.5T840-480v320q0 17-11.5 28.5T800-120H560q-17 0-28.5-11.5T520-160Zm-400 0v-160q0-17 11.5-28.5T160-360h240q17 0 28.5 11.5T440-320v160q0 17-11.5 28.5T400-120H160q-17 0-28.5-11.5T120-160Zm80-360h160v-240H200v240Zm400 320h160v-240H600v240Zm0-480h160v-80H600v80ZM200-200h160v-80H200v80Zm160-320Zm240-160Zm0 240ZM360-280Z"/></svg>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <button onclick=toggleSubMenu(this) class="dropdown-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h207q16 0 30.5 6t25.5 17l57 57h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Zm0-80h640v-400H447l-80-80H160v480Zm0 0v-480 480Zm400-160v40q0 17 11.5 28.5T600-320q17 0 28.5-11.5T640-360v-40h40q17 0 28.5-11.5T720-440q0-17-11.5-28.5T680-480h-40v-40q0-17-11.5-28.5T600-560q-17 0-28.5 11.5T560-520v40h-40q-17 0-28.5 11.5T480-440q0 17 11.5 28.5T520-400h40Z"/></svg>
+          <span>Create</span>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z"/></svg>
+        </button>
+        <ul class="sub-menu">
+          <div>
+            <li><a href="#">Folder</a></li>
+            <li><a href="#">Document</a></li>
+            <li><a href="#">Project</a></li>
+          </div>
+        </ul>
+      </li>
+      <li>
+        <button onclick=toggleSubMenu(this) class="dropdown-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m221-313 142-142q12-12 28-11.5t28 12.5q11 12 11 28t-11 28L250-228q-12 12-28 12t-28-12l-86-86q-11-11-11-28t11-28q11-11 28-11t28 11l57 57Zm0-320 142-142q12-12 28-11.5t28 12.5q11 12 11 28t-11 28L250-548q-12 12-28 12t-28-12l-86-86q-11-11-11-28t11-28q11-11 28-11t28 11l57 57Zm339 353q-17 0-28.5-11.5T520-320q0-17 11.5-28.5T560-360h280q17 0 28.5 11.5T880-320q0 17-11.5 28.5T840-280H560Zm0-320q-17 0-28.5-11.5T520-640q0-17 11.5-28.5T560-680h280q17 0 28.5 11.5T880-640q0 17-11.5 28.5T840-600H560Z"/></svg>
+          <span>Todo-Lists</span>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z"/></svg>
+        </button>
+        <ul class="sub-menu">
+          <div>
+            <li><a href="#">Work</a></li>
+            <li><a href="#">Private</a></li>
+            <li><a href="#">Coding</a></li>
+            <li><a href="#">Gardening</a></li>
+            <li><a href="#">School</a></li>
+          </div>
+        </ul>
+      </li>
+      <li>
+        <a href="calendar.html">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-40q0-17 11.5-28.5T280-880q17 0 28.5 11.5T320-840v40h320v-40q0-17 11.5-28.5T680-880q17 0 28.5 11.5T720-840v40h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-160 0q-17 0-28.5-11.5T280-440q0-17 11.5-28.5T320-480q17 0 28.5 11.5T360-440q0 17-11.5 28.5T320-400Zm320 0q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-160 0q-17 0-28.5-11.5T280-280q0-17 11.5-28.5T320-320q17 0 28.5 11.5T360-280q0 17-11.5 28.5T320-240Zm320 0q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z"/></svg>
+          <span>Calendar</span>
+        </a>
+      </li>
+      <li>
+        <a href="profile.html">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-240v-32q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v32q0 33-23.5 56.5T720-160H240q-33 0-56.5-23.5T160-240Zm80 0h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"/></svg>
+          <span>Profile</span>
+        </a>
+      </li>
+    </ul>
+    
+  </nav>
+  
+  <div>
+        <div id="calendar-container">
+        <div id="calendar-top-bar">
+            <h2 id="calendar-title"></h2>
+            <div id="view-toggles">
+                <button id="dayViewBtn">day</button>
+                <button id="weekViewBtn">week</button>
+                <button id="monthViewBtn" class="active">month</button>
+            </div>
+            <div id="navigation-controls">
+                <button id="prevMonth" class="nav-arrow" aria-label="Previous Month">&lt;</button>
+                <button id="nextMonth" class="nav-arrow" aria-label="Next Month">&gt;</button>
+                <button id="todayBtn">today</button>
+            </div>
+        </div>
+        <div id="calendar-grid">
+            <!-- Day names -->
+            <div class="day-name-header">Mon</div>
+            <div class="day-name-header">Tue</div>
+            <div class="day-name-header">Wed</div>
+            <div class="day-name-header">Thu</div>
+            <div class="day-name-header">Fri</div>
+            <div class="day-name-header">Sat</div>
+            <div class="day-name-header">Sun</div>
+            <!-- Dates and events will be dynamically generated here by JavaScript -->
+        </div>
+        <button id="generateIdeasBtn" class="mt-4 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out">
+            
+        </button>
+    </div>
+
+    <!-- Event Idea Generator Modal -->
+    <div id="eventIdeaModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Generate Event Ideas</h3>
+                <span class="close-button">&times;</span>
+            </div>
+            <p>Tell me what kind of event you're thinking about:</p>
+            <textarea id="ideaPromptInput" placeholder="e.g., 'a fun team building event for 10 people', 'a relaxing weekend activity', 'ideas for a child's birthday party'"></textarea>
+            <button id="submitIdeaBtn">Generate Ideas</button>
+            <div id="loadingSpinner" class="loading-spinner"></div>
+            <div id="event-ideas-output"></div>
+        </div>
+    
+    </div>
+</body>
+<style>
+        /* Custom styles for the calendar */
+        body {
+            font-family: 'Inter', sans-serif; /* Using Inter font */
+            
+            align-items:baseline;
+            min-height: 90vh;
+            margin: 0;
+            width: 100%; 
+           
+        }
+
+        #calendar-container {
+            max-width: auto; /* Increased max width for events */
+            width: 100%; /* Full width on smaller screens */
+            background-color: #ffffff;
+            border-radius: 12px; /* More rounded corners */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Softer, larger shadow */
+            padding: 25px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 30px; /* Space between sections */
+            height: auto;
+        }
+
+        #calendar-top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            gap: 10px; /* Space between elements in the bar */
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5e7eb; /* Light border at the bottom */
+        }
+
+        #calendar-title {
+            font-size: 2em; /* Larger font for month/year */
+            font-weight: 700; /* Bold font */
+            color: #1a202c; /* Dark text color */
+        }
+
+        #view-toggles {
+            display: flex;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+        }
+
+        #view-toggles button {
+            background-color: #f9fafb; /* Light background for inactive */
+            color: #4b5563; /* Darker text for inactive */
+            border: none;
+            padding: 8px 15px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        #view-toggles button.active {
+            background-color: #6d28d9; /* Purple for active button */
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        #view-toggles button:hover:not(.active) {
+            background-color: #e0e7ff; /* Light blue on hover */
+            color: #3b82f6; /* Blue text on hover */
+        }
+
+        #navigation-controls {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        #navigation-controls button {
+            background-color: #6d28d9; /* Purple button background */
+            color: #ffffff;
+            border: none;
+            border-radius: 8px; /* Rounded buttons */
+            padding: 8px 15px;
+            margin-right:50px ;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Button shadow */
+        }
+
+        #navigation-controls button:hover {
+            background-color: #5b21b6; /* Darker purple on hover */
+            transform: translateY(-2px); /* Slight lift effect */
+        }
+
+        #navigation-controls button.nav-arrow {
+            padding: 8px 12px; /* Smaller padding for arrows */
+        }
+
+        #calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr); /* 7 columns for days */
+            gap: 5px; /* Space between cells */
+            text-align: center;
+        }
+
+        .day-name-header {
+            font-weight: 600; /* Semi-bold */
+            color: #6d28d9; /* Purple text for day names */
+            padding: 10px 0;
+            font-size: 1em;
+            background-color: #ede9fe; /* Light purple background for day names */
+            border-radius: 8px;
+        }
+
+        .date-cell {
+            min-height: 100px; /* Minimum height for date cells to accommodate events */
+            padding: 8px;
+            border-radius: 8px; /* Rounded date cells */
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            font-size: 1em;
+            color: #374151; /* Darker grey for dates */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align content to top-left */
+            gap: 4px; /* Space between date number and events */
+            border: 1px solid #e5e7eb; /* Light border for cells */
+            position: relative; /* For absolute positioning of today marker */
+        }
+
+        .date-number {
+            font-weight: 700;
+            font-size: 1.1em;
+            align-self: flex-end; /* Align date number to top-right */
+            color: #4b5563;
+        }
+
+        .date-cell:hover:not(.current-day):not(.other-month) {
+            background-color: #eef2ff; /* Very light blue on hover */
+        }
+
+        .current-day {
+            background-color: #e0f2fe; /* Light blue background for current day */
+            border: 2px solid #3b82f6; /* Blue border for current day */
+            box-shadow: 0 0 0 2px #bfdbfe; /* Outer glow for current day */
+        }
+
+        .current-day .date-number {
+            color: #3b82f6; /* Blue text for current day number */
+        }
+
+        .today-marker {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 25px;
+            height: 25px;
+            background-color: #ef4444; /* Red circle for today */
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9em;
+            z-index: 10; /* Ensure it's above other content */
+        }
+
+
+        .other-month {
+            background-color: #f9fafb; /* Lighter background for other month days */
+            color: #9ca3af; /* Lighter grey for other month days */
+            cursor: default;
+            opacity: 0.8;
+            border: 1px dashed #e5e7eb; /* Dashed border for other month */
+        }
+
+        .event {
+            background-color: #3b82f6; /* Blue background for events */
+            color: #ffffff;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            text-align: left;
+            width: 100%; /* Full width within the cell */
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis; /* Ellipsis for long event names */
+            margin-top: 2px; /* Space between events */
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .event.all-day {
+            background-color: #10b981; /* Green for all-day events */
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 100; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 90%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .modal-header h3 {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #1a202c;
+        }
+
+        .close-button {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #333;
+        }
+
+        .modal-content textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1em;
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .modal-content button {
+            background-color: #6d28d9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal-content button:hover {
+            background-color: #5b21b6;
+        }
+
+        #event-ideas-output {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 15px;
+            min-height: 100px;
+            max-height: 300px; /* Limit height and add scroll */
+            overflow-y: auto;
+            white-space: pre-wrap; /* Preserve whitespace and line breaks */
+            font-size: 0.95em;
+            color: #374151;
+        }
+
+        .loading-spinner {
+            border: 4px solid #f3f3f3; /* Light grey */
+            border-top: 4px solid #6d28d9; /* Purple */
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+            display: none; /* Hidden by default */
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive adjustments for modal */
+        @media (max-width: 480px) {
+            .modal-content {
+                padding: 15px;
+                gap: 10px;
+            }
+            .modal-header h3 {
+                font-size: 1.2em;
+            }
+            .modal-content textarea {
+                min-height: 60px;
+            }
+            .modal-content button {
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const calendarTitle = document.getElementById('calendar-title');
+            const prevMonthBtn = document.getElementById('prevMonth');
+            const nextMonthBtn = document.getElementById('nextMonth');
+            const todayBtn = document.getElementById('todayBtn');
+            const calendarGrid = document.getElementById('calendar-grid');
+            const monthViewBtn = document.getElementById('monthViewBtn');
+            const dayViewBtn = document.getElementById('dayViewBtn');
+            const weekViewBtn = document.getElementById('weekViewBtn');
+            const generateIdeasBtn = document.getElementById('generateIdeasBtn');
+            const eventIdeaModal = document.getElementById('eventIdeaModal');
+            const closeButton = eventIdeaModal.querySelector('.close-button');
+            const ideaPromptInput = document.getElementById('ideaPromptInput');
+            const submitIdeaBtn = document.getElementById('submitIdeaBtn');
+            const eventIdeasOutput = document.getElementById('event-ideas-output');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+
+            // Set initial date to July 2025 as per the image for demonstration
+            let currentDate = new Date(2025, 6, 1); // Month is 0-indexed, so 6 is July
+            const today = new Date(); // Stores today's actual date for highlighting
+
+            // Sample event data (you can replace this with data fetched from an API)
+            // Dates are formatted as 'YYYY-MM-DD' for easy comparison
+            const events = [
+                { date: '2025-07-19', time: '10:30a', title: 'Meeting' },
+                
+                // Add more events for other months or dynamically
+                { date: '2025-07-18', time: 'All Day', title: 'Important Day', isAllDay: true },
+                
+            ];
+
+            /**
+             * Formats a Date object into a 'YYYY-MM-DD' string.
+             * @param {Date} date - The date object to format.
+             * @returns {string} The formatted date string.
+             */
+            function formatDate(date) {
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+                const day = String(date.getDate()).padStart(2, '0');
+                return `${year}-${month}-${day}`;
+            }
+
+            /**
+             * Renders the calendar grid for the current month.
+             */
+            function renderCalendar() {
+                calendarGrid.innerHTML = ''; // Clear existing date cells, but keep day names
+
+                // Re-add day names as they are part of the grid structure
+                const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+                dayNames.forEach(name => {
+                    const dayNameHeader = document.createElement('div');
+                    dayNameHeader.classList.add('day-name-header');
+                    dayNameHeader.textContent = name;
+                    calendarGrid.appendChild(dayNameHeader);
+                });
+
+
+                const year = currentDate.getFullYear();
+                const month = currentDate.getMonth(); // 0-indexed (0 = January, 11 = December)
+
+                // Update the header with the current month and year
+                calendarTitle.textContent = `${new Date(year, month).toLocaleString('en-US', { month: 'long', year: 'numeric' })}`;
+
+                // Get the day of the week for the 1st of the month
+                // Adjust getDay() to make Monday = 0, Tuesday = 1, ..., Sunday = 6
+                // getDay() returns 0 for Sunday, 1 for Monday, ..., 6 for Saturday
+                const firstDayOfMonth = new Date(year, month, 1).getDay(); // 0 (Sun) - 6 (Sat)
+                const adjustedFirstDay = (firstDayOfMonth === 0) ? 6 : firstDayOfMonth - 1; // 0 (Mon) - 6 (Sun)
+
+                // Get the number of days in the current month
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+                // Get the number of days in the previous month
+                const daysInPrevMonth = new Date(year, month, 0).getDate();
+
+                // Fill in leading empty cells (days from the previous month)
+                for (let i = adjustedFirstDay; i > 0; i--) {
+                    const dateCell = document.createElement('div');
+                    dateCell.classList.add('date-cell', 'other-month');
+                    const day = daysInPrevMonth - i + 1;
+                    const dateNumberSpan = document.createElement('span');
+                    dateNumberSpan.classList.add('date-number');
+                    dateNumberSpan.textContent = day;
+                    dateCell.appendChild(dateNumberSpan);
+                    calendarGrid.appendChild(dateCell);
+                }
+
+                // Fill in days of the current month
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dateCell = document.createElement('div');
+                    dateCell.classList.add('date-cell');
+
+                    const dateNumberSpan = document.createElement('span');
+                    dateNumberSpan.classList.add('date-number');
+                    dateNumberSpan.textContent = day;
+                    dateCell.appendChild(dateNumberSpan);
+
+                    // Check if this date is today's actual date
+                    const currentDayFullDate = new Date(year, month, day);
+                    if (formatDate(currentDayFullDate) === formatDate(today)) {
+                        dateCell.classList.add('current-day');
+                        // Add the small red circle for today's date, if it's the current month displayed
+                        if (currentDate.getMonth() === today.getMonth() && currentDate.getFullYear() === today.getFullYear()) {
+                             const todayMarker = document.createElement('div');
+                             todayMarker.classList.add('today-marker');
+                             todayMarker.textContent = day; // Display the day number inside the circle
+                             dateCell.appendChild(todayMarker);
+                             // Remove the dateNumberSpan if todayMarker is used to avoid duplication
+                             dateNumberSpan.style.display = 'none';
+                        }
+                    }
+
+                    // Add events for this day
+                    const formattedCellDate = formatDate(new Date(year, month, day));
+                    const dayEvents = events.filter(event => event.date === formattedCellDate);
+
+                    dayEvents.forEach(event => {
+                        const eventDiv = document.createElement('div');
+                        eventDiv.classList.add('event');
+                        if (event.isAllDay) {
+                            eventDiv.classList.add('all-day');
+                            eventDiv.textContent = event.title; // All day events don't show time
+                        } else {
+                            eventDiv.textContent = `${event.time} ${event.title}`;
+                        }
+                        dateCell.appendChild(eventDiv);
+                    });
+
+                    calendarGrid.appendChild(dateCell);
+                }
+
+                // Fill in trailing empty cells (days from the next month)
+                const totalCellsFilled = adjustedFirstDay + daysInMonth;
+                const cellsToFill = (totalCellsFilled % 7 === 0) ? 0 : 7 - (totalCellsFilled % 7); // Cells needed to complete the last row
+                const minRows = 5; // Calendar should always show at least 5 rows of dates
+                const totalRows = Math.ceil((adjustedFirstDay + daysInMonth) / 7);
+                const cellsForMinRows = minRows * 7;
+
+                let nextMonthDay = 1;
+                for (let i = 0; i < cellsToFill || (totalRows < minRows && (totalCellsFilled + i) < cellsForMinRows); i++) {
+                    const dateCell = document.createElement('div');
+                    dateCell.classList.add('date-cell', 'other-month');
+                    const dateNumberSpan = document.createElement('span');
+                    dateNumberSpan.classList.add('date-number');
+                    dateNumberSpan.textContent = nextMonthDay++;
+                    dateCell.appendChild(dateNumberSpan);
+                    calendarGrid.appendChild(dateCell);
+                }
+            }
+
+            // Event listener for previous month button
+            prevMonthBtn.addEventListener('click', () => {
+                currentDate.setMonth(currentDate.getMonth() - 1);
+                renderCalendar();
+            });
+
+            // Event listener for next month button
+            nextMonthBtn.addEventListener('click', () => {
+                currentDate.setMonth(currentDate.getMonth() + 1);
+                renderCalendar();
+            });
+
+            // Event listener for today button
+            todayBtn.addEventListener('click', () => {
+                currentDate = new Date(today.getFullYear(), today.getMonth(), 1); // Set to the 1st of today's month
+                renderCalendar();
+            });
+
+            // Event listeners for view toggles (placeholder functionality)
+            monthViewBtn.addEventListener('click', () => {
+                monthViewBtn.classList.add('active');
+                dayViewBtn.classList.remove('active');
+                weekViewBtn.classList.remove('active');
+                // In a real app, you'd render the month view here
+                renderCalendar(); // Re-render to ensure month view is active
+            });
+
+            dayViewBtn.addEventListener('click', () => {
+                dayViewBtn.classList.add('active');
+                monthViewBtn.classList.remove('active');
+                weekViewBtn.classList.remove('active');
+                // This would trigger rendering of a day view
+                alert('Day view functionality not implemented in this example.');
+            });
+
+            weekViewBtn.addEventListener('click', () => {
+                weekViewBtn.classList.add('active');
+                monthViewBtn.classList.remove('active');
+                dayViewBtn.classList.remove('active');
+                // This would trigger rendering of a week view
+                alert('Week view functionality not implemented in this example.');
+            });
+
+            // Event listener for "Generate Event Ideas" button
+            generateIdeasBtn.addEventListener('click', () => {
+                eventIdeaModal.style.display = 'flex'; // Show the modal
+                eventIdeasOutput.textContent = ''; // Clear previous output
+                ideaPromptInput.value = ''; // Clear previous input
+            });
+
+            // Event listener for modal close button
+            closeButton.addEventListener('click', () => {
+                eventIdeaModal.style.display = 'none'; // Hide the modal
+            });
+
+            // Close modal if clicking outside the content
+            window.addEventListener('click', (event) => {
+                if (event.target === eventIdeaModal) {
+                    eventIdeaModal.style.display = 'none';
+                }
+            });
+
+            // Event listener for submitting the idea prompt to Gemini API
+            submitIdeaBtn.addEventListener('click', async () => {
+                const prompt = ideaPromptInput.value.trim();
+                if (!prompt) {
+                    eventIdeasOutput.textContent = 'Please enter a theme or description for event ideas.';
+                    return;
+                }
+
+                eventIdeasOutput.textContent = ''; // Clear previous results
+                loadingSpinner.style.display = 'block'; // Show loading spinner
+                submitIdeaBtn.disabled = true; // Disable button during generation
+
+                try {
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: `Generate a list of creative event ideas based on the following description: "${prompt}". Provide at least 3-5 distinct ideas, each with a brief title and a one-sentence description. Format the output as a bulleted list.` }] });
+                    const payload = { contents: chatHistory };
+                    const apiKey = ""; // Canvas will automatically provide the API key
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        eventIdeasOutput.textContent = text;
+                    } else {
+                        eventIdeasOutput.textContent = 'Could not generate ideas. Please try again.';
+                        console.error('Gemini API response structure unexpected:', result);
+                    }
+                } catch (error) {
+                    eventIdeasOutput.textContent = 'An error occurred while generating ideas. Please check your network connection or try again later.';
+                    console.error('Error calling Gemini API:', error);
+                } finally {
+                    loadingSpinner.style.display = 'none'; // Hide loading spinner
+                    submitIdeaBtn.disabled = false; // Re-enable button
+                }
+            });
+
+
+            // Initial render of the calendar when the page loads
+            renderCalendar();
+        });
+        
+    </script>
+</html>
