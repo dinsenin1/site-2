@@ -713,10 +713,11 @@ main p{
 /* Container for the statistics (Flexbox for layout) */
 .work {
     display: flex;
-    flex-direction: column; /* Stack vertically by default for mobile-first */
+    flex-direction: row; /* Stack vertically by default for mobile-first */
     gap: 40px; /* Space between each statistic block */
     max-width: 1000px; /* Limit the overall width for better readability */
     margin: 0 auto; /* Center the container */
+    
 }
 
 /* Individual Statistic Block Styling */
@@ -764,6 +765,7 @@ main p{
 
 .our-work > div:first-child { /* Targets the heading and paragraph container */
     margin-bottom: 40px;
+    
 }
 
 .our-work h1 {
@@ -831,9 +833,9 @@ main p{
 }
 
 /* Specific Progress Bar Widths (Adjust these values as needed) */
-#myBar1 { width:10%; } /* Photography */
-#myBar2 { width: 10%; } /* Web Design */
-#myBar3 { width: 70%; } /* Photoshop */
+#myBar1 { width:40%; } /* Cybercecurity */
+#myBar2 { width: 50%; } /* Web Design */
+#myBar3 { width: 70%; } /* Designer */
 
 
 /* --- Media Queries for Responsiveness --- */
@@ -992,6 +994,7 @@ main p{
     gap: 40px; /* Space between the contact info and the form */
     max-width: 900px; /* Limit overall width for readability */
     margin: 0 auto; /* Center the content */
+    
 }
 
 /* Left Column: Contact Information */
@@ -1032,9 +1035,10 @@ main p{
     color: #333;
     margin-bottom: 8px;
     font-weight: bold;
+    
 }
 
-.email-contact input[type="text"],
+.email-contact input[type="text" ],
 .email-contact select,
 .email-contact textarea {
     width: 100%;
@@ -1088,6 +1092,7 @@ main p{
     .email-contact {
         flex: 2; /* Allow form to take more space */
         max-width: 60%; /* Adjust as needed, more than 50% for form */
+        
     }
 }
 
@@ -1126,4 +1131,96 @@ hr:after {
   bottom:auto;
   height: 1.5em;
   background: radial-gradient(ellipse at top, rgba(0,0,0,0.06) 0%,rgba(0,0,0,0) 70%);
+}
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap");
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+  .card {
+    padding: 15px;
+    width: 350px;
+    background: #222;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.7);
+    user-select: none;
+}
+
+.cover-photo {
+    position: relative;
+    background: url(https://tse2.mm.bing.net/th/id/OIP.qu-z17y2ob_PwDhOWW3MYgHaEK?rs=1&pid=ImgDetMain&o=7&rm=3);
+    background-size: cover;
+    height: 180px;
+    border-radius: 5px 5px 0 0;
+}
+
+.profile {
+    position: absolute;
+    width: 120px;
+    bottom: -60px;
+    left: 15px;
+    border-radius: 50%;
+    border: 2px solid #222;
+    background: #222;
+    padding: 5px;
+}
+
+.profile-name {
+    font-size: 20px;
+    margin: 25px 0 0 120px;
+    color: #fff;
+}
+
+.about {
+    margin-top: 30px;
+    line-height: 1.6;
+    color: #fff;
+}
+
+.btn {
+    margin: 30px 15px;
+    background: #464747;
+    padding: 10px 25px;
+    border-radius: 3px;
+    border: 1px solid #7ce3ff;
+    font-weight: bold;
+    font-family: Montserrat;
+    cursor: pointer;
+    color: #222;
+    transition: 0.2s;
+}
+
+.btn:last-of-type {
+    background: transparent;
+    border-color: #374447;
+    color: hsl(192, 67%, 8%);
+}
+
+.btn:hover {
+    background: #3c50aa;
+    color: #ffffff;
+}
+
+.icons {
+    color: #000000;
+    width: 180px;
+    margin: 0 auto 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.icons i {
+    cursor: pointer;
+    padding: 5px;
+    font-size: 18px;
+    transition: 0.2s;
+}
+
+.icons i:hover {
+    color: #7ce3ff;
 }
