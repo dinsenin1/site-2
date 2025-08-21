@@ -6,7 +6,8 @@
   <title>Home</title>
   <link rel="stylesheet" href="style.css">
   <script type="text/javascript" src="app.js" defer></script>
-   
+   <script src="https://smtpjs.com/v3/smtp.js">
+</script>
 </head>
 <body>
   
@@ -183,7 +184,7 @@
                     <img src="imagini/Arhanghel27.webp" alt="img">
                     <h1>Arhanghel27</h1><h2>CEO</h2>
                 <p>It takes 20 years to build a reputation and five minutes to ruin it.</p>
-                <br><a href="mailto:bogdan_office@yahoo.com"><button class="button">Contact</button></a>
+                <br><a href="mailto:bogdanoffice86@gmail.com" ><button class="button">Contact</button></a>
             </div>
                <!-- <div class="box">
                     <img src="" alt="img">
@@ -285,12 +286,13 @@
         </div>
         <div class="email-colon">
             <div class="left">
-            <!-- <p> Phone: +00 151515</p>-->
-            <p> Email: ..............</p></div>
+            
+            <p> If you had something else in mind contact me. </p></div>
             <div class="email-contact">
-                <form action="/action_page.php">
+                <form action="https://api.web3forms.com/submit" method="POST">
+     <input type="hidden" name="access_key" value="03e8c175-db6d-4b48-92b5-9b06d0ad29fc">             
     <label for="fname">First Name</label>
-    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+    <input type="text" id="fname" name="name" placeholder="Your name..">
 
     <label for="lname">Last Name</label>
     <input type="text" id="lname" name="lastname" placeholder="Your last name..">
@@ -309,9 +311,10 @@
     </select>
 
     <label for="subject">Subject</label>
-    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+    <textarea id="subject" name="message" placeholder="Write something.." style="height:200px"></textarea>
 
     <input type="submit" value="Submit">
+    <input type="hidden" name="redirect" value="file:///C:/Users/bogda/Desktop/sidebar-menu/index.html">
   </form>
             </div>
         </div>
@@ -345,4 +348,6 @@
    
   </main>
 </body>
+
+
 </html>

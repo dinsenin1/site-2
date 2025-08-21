@@ -366,7 +366,11 @@ main p{
     height: auto; /* Maintain aspect ratio */
     display: block; /* Remove extra space below image */
     border-radius: 8px; /* Slightly rounded corners for the image */
-   
+    transition: transform 1s ease, box-shadow 0.7s ease;
+}
+.header img:hover {
+    transform: translateY(-5px);
+    
 }
 
 
@@ -507,15 +511,16 @@ main p{
     flex-direction: row; /* Stacks items vertically by default (for mobile-first) */
     align-items: center; /* Centers items horizontally when stacked */
     text-align: center; /* Centers text content */
-    padding: 60px 20px; /* Vertical and horizontal padding for the section */
+    padding: 50px 20px; /* Vertical and horizontal padding for the section */
     background-color: var(--accent-color--base-color);/* Light background for the section */
-    gap: 30px; /* Space between the text div and image div */
+    gap: 5px; /* Space between the text div and image div */
 }
 
 /* Styling for the direct child divs (text content and image container) */
 .We-know-design > div img{
-    flex: 2; /* Allows both divs to take equal space in a row layout */
+    flex: 1; /* Allows both divs to take equal space in a row layout */
     padding: 10px; /* Padding within each content div */
+    
 }
 
 /* Text content styling */
@@ -528,7 +533,7 @@ main p{
 }
 .We-know-design li {
     color: var(--buton);
-    list-style: none;
+    list-style:decimal-leading-zero;
 }
 .We-know-design p {
     font-size: 1.1em;
@@ -548,11 +553,12 @@ main p{
     font-size: 1em;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    transition: background-color 0.3s ease; /* Smooth hover effect */
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth hover effect */
 }
 
 .We-know-design .button:hover {
     background-color: var(--accent-clr); /* Darker blue on hover */
+    transform: translateY(-5px);
 }
 
 /* Image styling */
@@ -663,7 +669,8 @@ main p{
 }
 
 .button:hover {
-    background-color: var(--accent-clr);
+        background-color: var(--accent-clr);
+    
 }
 
 /* --- Media Queries for Responsiveness --- */
@@ -717,13 +724,20 @@ main p{
     gap: 40px; /* Space between each statistic block */
     max-width: 1000px; /* Limit the overall width for better readability */
     margin: 0 auto; /* Center the container */
-    
+     
 }
+
+
 
 /* Individual Statistic Block Styling */
 .work > div {
     /* No specific width needed here as flex-direction: column handles it */
     padding: 20px;
+    transition: transform 1s ease, box-shadow 0.7s ease;
+}
+.work > div:hover {
+    transform: translateY(-5px);
+    
 }
 
 .work h1 {
@@ -748,7 +762,7 @@ main p{
         flex: 1; /* Arrange items in a row */
         flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
         justify-content: center; /* Distribute items with space around them */
-       align-items: center;
+        align-items: center;
         height: 100%;
       
     }
@@ -761,7 +775,10 @@ main p{
     padding: 60px 0;
     background-color: var(--line-clr); /* Light background for the section */
     text-align: center;
+   
 }
+
+
 
 .our-work > div:first-child { /* Targets the heading and paragraph container */
     margin-bottom: 40px;
@@ -772,6 +789,7 @@ main p{
     font-size: 2.8em;
     color: var(--accent-clr);
     margin-bottom: 10px;
+    
 }
 
 .our-work p {
@@ -790,6 +808,7 @@ main p{
     gap: 20px; /* Space between each skill box */
     max-width: 1200px; /* Limit width of progress bars container */
     margin: 0 auto; /* Center the container */
+     
 }
 
 /* Individual Skill Box Styling */
@@ -801,12 +820,17 @@ main p{
     width: 100%; /* Full width on small screens */
     max-width: 1200px; /* Max width for individual skill box */
     text-align: left; /* Align skill name to left */
+    
 }
-
+.box2 h1:hover {
+    transform: translateY(-5px);
+    
+}
 .box2 h1 {
     font-size: 1.8em;
     color: var(--accent-clr);
     margin-bottom: 15px;
+    transition: transform 1s ease, box-shadow 0.7s ease;
 }
 
 /* Progress Bar Track */
@@ -815,6 +839,7 @@ main p{
     background-color: #ddd; /* Grey background for the track */
     border-radius: 5px;
     overflow: hidden; /* Hide anything outside the rounded corners */
+
 }
 
 /* Progress Bar Fill */
@@ -827,9 +852,9 @@ main p{
     color: white; /* White text color */
     font-weight: bold;
     font-size: 0.9em;
-    transition: width 1s ease-in-out; /* Smooth animation for width change */
     padding-right: 10px; /* Space for the percentage text */
     box-sizing: border-box; /* Include padding in width */
+    
 }
 
 /* Specific Progress Bar Widths (Adjust these values as needed) */
@@ -856,9 +881,10 @@ main p{
 
 
     .container {
-    max-width: 1000px; /* Limits the overall width of content */
+    max-width: 1200px; /* Limits the overall width of content */
     margin: 0 auto; /* Centers the container */
     padding: 0 20px; /* Adds horizontal padding */
+    
 }
 
 
@@ -887,8 +913,8 @@ main p{
     display: flex;
     flex-direction: column; /* Stacks boxes vertically by default (mobile-first) */
     align-items: center; /* Centers boxes horizontally when stacked */
-    gap: 2rem; /* Space between pricing boxes */
-   height: 50vh:
+    gap: 0.5rem; /* Space between pricing boxes */
+    
 }
 
 /* Individual Pricing Box Styling */
@@ -900,11 +926,11 @@ main p{
     width: 100%; /* Full width on small screens */
     max-width: 220px; /* Maximum width for each box */
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
     flex:1; /* Flex container for content inside the box */
     flex-direction: column; /* Stack content vertically */
     justify-content: space-between; /* Distribute space between items */
-    min-height: 400px; /* Ensure consistent height for all boxes */
+    min-height: 500px; /* Ensure consistent height for all boxes */
 }
 
 .preturi .box:hover {
@@ -913,7 +939,7 @@ main p{
 }
 
 .preturi .box h1 {
-    font-size: 2.2em;
+    font-size: 2em;
     color: var(--buton); /* Highlight for plan name */
     margin-bottom: 20px;
     text-transform: uppercase;
@@ -945,11 +971,11 @@ main p{
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 15px 30px;
+    padding: 10px 30px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1.1em;
-    text-transform: uppercase;
+    font-size: 1em;
+    text-transform:capitalize;
     transition: background-color 0.3s ease;
     margin-top: auto; /* Pushes the button to the bottom if content varies */
 }
@@ -1224,3 +1250,42 @@ hr:after {
 .icons i:hover {
     color: #7ce3ff;
 }
+
+const form = document.getElementById('form');
+const result = document.getElementById('result');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const formData = new FormData(form);
+  const object = Object.fromEntries(formData);
+  const json = JSON.stringify(object);
+  result.innerHTML = "Please wait..."
+
+    fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        })
+        .then(async (response) => {
+            let json = await response.json();
+            if (response.status == 200) {
+                result.innerHTML = "Form submitted successfully";
+            } else {
+                console.log(response);
+                result.innerHTML = json.message;
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            result.innerHTML = "Something went wrong!";
+        })
+        .then(function() {
+            form.reset();
+            setTimeout(() => {
+                result.style.display = "none";
+            }, 3000);
+        });
+});
